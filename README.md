@@ -1,10 +1,13 @@
 <p align="center">
-  <img src="Gemini_Generated_Image_d0pybpd0pybpd0py.png" alt="FutureCast logo" width="520" />
+  <img src="Gemini_Generated_Image_d0pybpd0pybpd0py.png" alt="FutureCast-Bench logo" width="520" />
 </p>
 
-# FutureCast
+# FutureCast-Bench
 
-**FutureCast** is a context-aware time series forecasting benchmark and training corpus for evaluating whether forecasting models can move beyond numerical extrapolation and reason with real-world context.
+**FutureCast-Bench** is a context-aware forecasting benchmark from the **FutureCast（天星台）** project. It is designed to evaluate whether forecasting models can move beyond numerical extrapolation and reason with real-world context.
+
+**Chinese name:** 天星台  
+**Tagline:** *A Context-Aware Forecasting Benchmark*
 
 Instead of representing each forecasting task only as:
 
@@ -12,7 +15,7 @@ Instead of representing each forecasting task only as:
 historical time series -> future values
 ```
 
-FutureCast represents each task as:
+FutureCast-Bench represents each task as:
 
 ```text
 historical time series + numeric exogenous variables + textual exogenous context + evidence annotations -> forecasting target
@@ -20,7 +23,17 @@ historical time series + numeric exogenous variables + textual exogenous context
 
 The goal is to support the next generation of time series foundation models, LLM-driven forecasting models, slow-thinking forecasting systems, and agentic forecasting workflows.
 
-## Why FutureCast?
+## Naming
+
+| Usage | Name |
+|---|---|
+| Project family | **FutureCast（天星台）** |
+| Benchmark | **FutureCast-Bench** |
+| Data corpus | **FutureCast-Corpus** |
+| Task collection | **FutureCast-Tasks** |
+| Full title | **FutureCast-Bench: A Context-Aware Forecasting Benchmark** |
+
+## Why FutureCast-Bench?
 
 Most existing time series benchmarks are built around the numerical series itself. They evaluate whether a model can forecast future values from past values across different domains, frequencies, and horizons. This is necessary, but it is not enough for real-world forecasting.
 
@@ -37,7 +50,7 @@ In real applications, the future is often shaped by information outside the targ
 
 Two time series can have similar historical shapes but very different futures because their surrounding contexts are different. A benchmark that only measures numerical error cannot tell whether a model is merely fitting statistical patterns or actually understanding why the future changes.
 
-FutureCast is designed to fill this gap. It evaluates not only whether a model predicts accurately, but also whether it can:
+FutureCast-Bench is designed to fill this gap. It evaluates not only whether a model predicts accurately, but also whether it can:
 
 - identify which contextual information is relevant;
 - align context with the correct time interval and forecasting target;
@@ -47,7 +60,7 @@ FutureCast is designed to fill this gap. It evaluates not only whether a model p
 
 ## Core Capabilities
 
-FutureCast is organized around three core capabilities.
+FutureCast-Bench is organized around three core capabilities.
 
 ### 1. Context-Sequence Alignment and Fusion
 
@@ -59,7 +72,7 @@ Models should not only output future values, but also reason about the potential
 
 ### 3. Dynamic Context Adaptation
 
-Real forecasting is often an iterative process. A model may first make a prediction with incomplete information, then receive new evidence, update its reasoning, and revise the forecast. FutureCast includes tasks for evaluating this dynamic adaptation ability.
+Real forecasting is often an iterative process. A model may first make a prediction with incomplete information, then receive new evidence, update its reasoning, and revise the forecast. FutureCast-Bench includes tasks for evaluating this dynamic adaptation ability.
 
 ## Current Benchmark Status
 
@@ -108,7 +121,7 @@ The key components are:
 
 ## Variable Types
 
-FutureCast uses three public-facing variable categories.
+FutureCast-Bench uses three public-facing variable categories.
 
 | Variable Type | Meaning | Examples |
 |---|---|---|
@@ -118,7 +131,7 @@ FutureCast uses three public-facing variable categories.
 
 ## Task System
 
-FutureCast supports a multi-layer task system from basic forecasting to context-aware reasoning.
+FutureCast-Bench supports a multi-layer task system from basic forecasting to context-aware reasoning.
 
 | Task Type | Goal |
 |---|---|
@@ -134,7 +147,7 @@ FutureCast supports a multi-layer task system from basic forecasting to context-
 
 ## Evaluation Dimensions
 
-FutureCast evaluates models along multiple dimensions.
+FutureCast-Bench evaluates models along multiple dimensions.
 
 | Dimension | Example Metrics |
 |---|---|
@@ -146,7 +159,7 @@ FutureCast evaluates models along multiple dimensions.
 
 ### Forecast Revision Gain
 
-One distinctive metric in FutureCast is **Forecast Revision Gain**, which measures whether a model can improve its prediction after receiving new contextual evidence.
+One distinctive metric in FutureCast-Bench is **Forecast Revision Gain**, which measures whether a model can improve its prediction after receiving new contextual evidence.
 
 ```text
 Forecast Revision Gain = initial forecast error - revised forecast error
@@ -156,7 +169,7 @@ A positive value indicates that the model successfully used new contextual infor
 
 ## Why This Benchmark Matters
 
-FutureCast is designed for a forecasting setting where models need to understand not only *what happened before*, but also *why the future may change*.
+FutureCast-Bench is designed for a forecasting setting where models need to understand not only *what happened before*, but also *why the future may change*.
 
 It aims to support research on:
 
@@ -183,6 +196,6 @@ This repository is under active development. The current version focuses on benc
 
 ## Contact
 
-FutureCast is developed by the AGI Research Group at the State Key Laboratory of Cognitive Intelligence, University of Science and Technology of China.
+FutureCast（天星台） is developed by the AGI Research Group at the State Key Laboratory of Cognitive Intelligence, University of Science and Technology of China.
 
 For questions, suggestions, or collaboration, please open an issue in this repository.
