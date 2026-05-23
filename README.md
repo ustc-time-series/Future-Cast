@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="Gemini_Generated_Image_d0pybpd0pybpd0py.png" alt="FutureCast logo" width="520" />
+</p>
+
 # FutureCast
 
 **FutureCast** is a context-aware time series forecasting benchmark and training corpus for evaluating whether forecasting models can move beyond numerical extrapolation and reason with real-world context.
@@ -27,6 +31,8 @@ In real applications, the future is often shaped by information outside the targ
 - retail demand is affected by promotion, price, holidays, inventory, store location, and consumer behavior;
 - clinical variables are affected by patient status, treatment intervention, missingness, and medical knowledge;
 - macroeconomic indicators are affected by policy changes, inflation, interest rates, employment, and market expectations;
+- climate and hydrology variables are affected by seasonal cycles, geography, precipitation, snowpack, and local physical conditions;
+- cloud machine utilization is affected by workload scheduling, resource contention, business cycles, and cluster-level operations;
 - industrial sensor signals are affected by operating conditions, maintenance, environment, and abnormal events.
 
 Two time series can have similar historical shapes but very different futures because their surrounding contexts are different. A benchmark that only measures numerical error cannot tell whether a model is merely fitting statistical patterns or actually understanding why the future changes.
@@ -57,62 +63,48 @@ Real forecasting is often an iterative process. A model may first make a predict
 
 ## Current Benchmark Status
 
-The current processed benchmark covers **10 datasets** across **6 domains**, with approximately **359K forecasting series**, **239M timestamp-level records**, and **230M valid target observations**.
+The current processed benchmark covers **14 datasets** across **9 domains**, with approximately **145K forecasting series** and **114M timestamp-level records**. Each dataset is stored in a lightweight CSV layout with one target file, one numeric exogenous file, one text exogenous file, and one task YAML definition for each benchmark task.
 
 | Domain | Dataset | Forecasting Target | Forecasting Unit | Frequency | Dataset Size | Variables | Lookback / Prediction Windows |
 |---|---|---|---|---|---|---|---|
-| Energy | SDWPF | Wind turbine power (`Patv`) | Turbine | 10 min | 134 turbines; about 11.36M timestamp records; about 7.81M valid target observations | 1 target; 17 numeric exogenous variables; 2 types of text exogenous context | Lookback: 1 / 10 / 15 days; Prediction: 8 hours / 3.3 days / 5 days |
-| Power | AEMO NEM DispatchIS | Regional electricity price (`RRP`) | NEM region | 5 min | 5 regions; about 130K timestamp records; about 129K valid target observations | 1 target; 15 numeric exogenous variables; 2 types of text exogenous context | Lookback: 3 hours / 3 days / 21 days; Prediction: 1 hour / 1 day / 7 days |
-| Sales | M5 | Daily unit sales | Item-store pair | 1 day | 30,490 item-store series; about 59.18M daily records | 1 target; 12 numeric exogenous variables; 2 types of text exogenous context | Lookback: 84 / 252 / 504 days; Prediction: 28 / 84 / 168 days |
-| Sales | Rossmann Store Sales | Store sales (`Sales`) | Store | 1 day | 1,115 store series; about 1.06M daily records; about 1.02M valid target observations | 1 target; 20 numeric exogenous variables; 2 types of text exogenous context | Lookback: 84 / 252 / 504 days; Prediction: 28 / 84 / 168 days |
-| Sales | Favorita Grocery Sales | Unit sales (`unit_sales`) | Store-item pair | 1 day | 219,126 store-item series; about 128.87M daily records; about 125.49M valid target observations | 1 target; 27 numeric exogenous variables; 2 types of text exogenous context | Lookback: 84 / 252 / 504 days; Prediction: 28 / 84 / 168 days |
-| Medical | PhysioNet 2012 | Clinical variable value | ICU stay-variable pair | 1 hour | 107,188 patient-variable series; about 5.25M hourly records; about 3.11M valid target observations | 1 target; 30 numeric exogenous variables; 2 types of text exogenous context | Lookback: 18 / 36 / 72 hours; Prediction: 6 / 12 / 24 hours |
-| Traffic | PEMS04 | Traffic flow | Traffic sensor | 5 min | 307 sensor series; about 5.22M timestamp records | 1 target; 16 numeric exogenous variables; 2 types of text exogenous context | Lookback: 3 / 9 / 72 hours; Prediction: 1 / 3 / 24 hours |
-| Traffic | PEMS07 | Traffic flow | Traffic sensor | 5 min | 883 sensor series; about 24.92M timestamp records | 1 target; 14 numeric exogenous variables; 2 types of text exogenous context | Lookback: 3 / 9 / 72 hours; Prediction: 1 / 3 / 24 hours |
-| Traffic | NYC TLC | Hourly pickup trip count | Taxi type-pickup zone pair | 1 hour | 513 taxi-zone series; about 3.36M hourly records | 1 target; 23 numeric exogenous variables; 2 types of text exogenous context | Lookback: 3 / 21 / 42 days; Prediction: 1 / 7 / 14 days |
-| Economics | FRED-MD | Transformed macroeconomic value | Macroeconomic variable | 1 month | 126 macroeconomic series; about 100K monthly records; about 99.7K valid target observations | 1 target; 12 numeric exogenous variables; 2 types of text exogenous context | Lookback: 36 / 36 / 72 months; Prediction: 1 / 12 / 24 months |
+| Energy | SDWPF | Wind turbine active power | Wind turbine | 10 min | 134 turbine series; about 11.36M timestamp records | 1 target; 24 numeric exogenous variables; text exogenous context | Lookback: 24 hours / 7 days / 30 days; Prediction: 8 hours / 24 hours / 7 days |
+| Power | AEMO NEM DispatchIS | Regional electricity price (`RRP`) | NEM region | 5 min | 5 region series; about 129.6K timestamp records | 1 target; 11 numeric exogenous variables; text exogenous context | Lookback: 24 hours / 7 days / 28 days; Prediction: 1 hour / 24 hours / 7 days |
+| Power | OPSD German Load | German actual electricity load | Country-level load series | 1 hour | 1 load series; about 50.4K hourly records | 1 target; 3 numeric exogenous variables; text exogenous context | Lookback: 7 / 30 / 90 days; Prediction: 24 hours / 7 days / 30 days |
+| Sales | M5 | Daily unit sales | Item-store pair | 1 day | 30,490 item-store series; about 59.18M daily records | 1 target; 7 numeric exogenous variables; text exogenous context | Lookback: 56 / 168 / 365 days; Prediction: 28 / 84 / 168 days |
+| Sales | Rossmann Store Sales | Store sales | Store | 1 day | 1,115 store series; about 1.06M daily records | 1 target; 13 numeric exogenous variables; text exogenous context | Lookback: 56 / 168 / 365 days; Prediction: 28 / 84 / 168 days |
+| Sales | Favorita Grocery Sales | Unit sales | Store-item pair from one selected store | 1 day | 4,081 store-item series; about 2.62M daily records | 1 target; 21 numeric exogenous variables; text exogenous context | Lookback: 56 / 168 / 365 days; Prediction: 28 / 84 / 168 days |
+| Medical | PhysioNet 2012 | ICU clinical variable value | ICU stay-variable pair | 1 hour | 107,188 patient-variable series; about 5.25M hourly records | 1 target; 19 numeric exogenous variables; text exogenous context | Lookback: 6 / 12 / 24 hours; Prediction: 6 / 12 / 24 hours |
+| Traffic | PEMS04 | Traffic flow | Road sensor | 5 min | 307 sensor series; about 5.22M timestamp records | 1 target; 15 numeric exogenous variables; text exogenous context | Lookback: 24 hours / 7 days / 28 days; Prediction: 1 hour / 24 hours / 7 days |
+| Traffic | PEMS07 | Traffic flow | Road sensor | 5 min | 883 sensor series; about 24.92M timestamp records | 1 target; 13 numeric exogenous variables; text exogenous context | Lookback: 24 hours / 7 days / 28 days; Prediction: 1 hour / 24 hours / 7 days |
+| Traffic | NYC TLC | Hourly pickup trip count | Taxi type-pickup zone pair | 1 hour | 513 taxi-zone series; about 3.36M hourly records | 1 target; 19 numeric exogenous variables; text exogenous context | Lookback: 7 / 28 / 90 days; Prediction: 24 hours / 7 days / 14 days |
+| Economics | FRED-MD | Transformed macroeconomic value | Macroeconomic variable | 1 month | 126 macroeconomic series; about 100.9K monthly records | 1 target; 8 numeric exogenous variables; text exogenous context | Lookback: 36 / 60 / 120 months; Prediction: 1 / 12 / 24 months |
+| Climate | Jena Climate | Air temperature | Weather station | 10 min | 1 temperature series; about 420.2K timestamp records | 1 target; 5 numeric exogenous variables; text exogenous context | Lookback: 24 hours / 7 days / 30 days; Prediction: 6 hours / 24 hours / 7 days |
+| Hydrology | Basin Streamflow | Daily streamflow | River basin | 1 day | 27 basin series; about 345K daily records | 1 target; 16 numeric exogenous variables; text exogenous context | Lookback: 1 / 3 / 10 years; Prediction: 7 days / 30 days / 1 year |
+| AIOps | Alibaba Cluster | CPU utilization | Machine | 1 hour | 100 machine series; about 19K hourly records | 1 target; 6 numeric exogenous variables; text exogenous context | Lookback: 24 hours / 7 days / 30 days; Prediction: 6 hours / 24 hours / 7 days |
 
 ## Data Organization
 
-Each dataset is organized into a unified CSV-based structure.
+Each dataset is organized into a unified lightweight CSV-based structure.
 
 ```text
 datasets/<domain>/<dataset_id>/
-  raw/
   processed/
-    <dataset_id>_<frequency>_long.csv
-    <dataset_id>_static_features.csv
-    by_series/
-      target/
-      numeric_exogenous/
-        observed/
-        known_future/
-      text_exogenous/
-        static_context/
-        time_context/
-      masks/
-      manifest.csv
-  splits/
-    *_temporal_split.csv
-    *_rolling_windows_short.csv
-    *_rolling_windows_medium.csv
-    *_rolling_windows_long.csv
+    target/
+      <series_id>.csv
+    numeric_exogenous/
+      <series_id>.csv
+    text_exogenous/
+      <series_id>.csv
   tasks/
-    *_short.yaml
-    *_medium.yaml
-    *_long.yaml
-  dataset_card.md
+    <dataset_task>.yaml
 ```
 
 The key components are:
 
-- `target/`: one target-variable CSV for each forecasting series;
-- `numeric_exogenous/`: structured exogenous variables such as calendar fields, prices, promotions, weather-related variables, traffic attributes, clinical covariates, and entity metadata;
-- `text_exogenous/`: textual descriptions of entities and time points, such as event descriptions, holiday context, missingness descriptions, region descriptions, or variable descriptions;
-- `masks/`: quality-control masks for missing values, invalid observations, future rows, and hard-test cases;
-- `splits/`: train, validation, test splits and non-overlapping rolling evaluation windows;
-- `tasks/`: YAML task definitions for short-, medium-, and long-horizon forecasting;
-- `dataset_card.md`: dataset-level documentation.
+- `target/`: one target-variable CSV for each forecasting series, with `timestamp`, `series_id`, and the target column;
+- `numeric_exogenous/`: structured exogenous variables aligned with the target file, such as calendar fields, prices, promotions, weather variables, graph features, clinical covariates, hydrologic forcing, and machine-resource signals;
+- `text_exogenous/`: timestamp-aligned natural-language context for the entity, time point, domain, and forecasting task;
+- `tasks/`: YAML task definitions describing the target variable, numeric and text exogenous variables, alignment rule, chronological split policy, and short-, medium-, and long-horizon forecasting windows.
 
 ## Variable Types
 
@@ -120,9 +112,9 @@ FutureCast uses three public-facing variable categories.
 
 | Variable Type | Meaning | Examples |
 |---|---|---|
-| Target variable | The value to be forecasted | wind power, electricity price, sales, traffic flow, clinical value, macroeconomic indicator |
-| Numeric exogenous variables | Structured variables outside the target sequence | calendar features, price, promotion, region, store metadata, sensor graph features, patient attributes, historical covariates |
-| Text exogenous variables | Natural-language context associated with entities or timestamps | holiday descriptions, event descriptions, region descriptions, product-store descriptions, missingness descriptions, variable descriptions |
+| Target variable | The value to be forecasted | wind power, electricity price, electricity load, sales, traffic flow, clinical value, macroeconomic indicator, streamflow, CPU utilization |
+| Numeric exogenous variables | Structured variables outside the target sequence | calendar features, price, promotion, weather, hydrologic forcing, sensor graph features, patient attributes, machine-resource variables |
+| Text exogenous variables | Natural-language context associated with entities or timestamps | holiday descriptions, region descriptions, station descriptions, basin descriptions, machine context, product-store descriptions, variable descriptions |
 
 ## Task System
 
@@ -179,10 +171,8 @@ It aims to support research on:
 
 Planned next steps include:
 
-- adding standalone electricity load forecasting datasets;
-- expanding weather and environmental forecasting tasks;
-- adding more financial market datasets;
-- enriching event-based and text-based contextual annotations;
+- expanding event-rich contextual annotations for electricity markets, transportation, retail, hydrology, AIOps, and medical forecasting;
+- adding more financial market and industrial operation datasets;
 - releasing model baselines and leaderboard protocols;
 - providing scripts for reproducible preprocessing and evaluation.
 
@@ -196,4 +186,3 @@ This repository is under active development. The current version focuses on benc
 FutureCast is developed by the AGI Research Group at the State Key Laboratory of Cognitive Intelligence, University of Science and Technology of China.
 
 For questions, suggestions, or collaboration, please open an issue in this repository.
-
