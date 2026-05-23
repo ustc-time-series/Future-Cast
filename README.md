@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="Gemini_Generated_Image_d0pybpd0pybpd0py.png" alt="FutureCast-Bench logo" width="520" />
+  <img src="logo.png" alt="FutureCast-Bench logo" width="520" />
 </p>
 
 # FutureCast-Bench
