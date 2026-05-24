@@ -45,6 +45,7 @@ In real applications, the future is often shaped by information outside the targ
 - clinical variables are affected by patient status, treatment intervention, missingness, and medical knowledge;
 - macroeconomic indicators are affected by policy changes, inflation, interest rates, employment, and market expectations;
 - climate and hydrology variables are affected by seasonal cycles, geography, precipitation, snowpack, and local physical conditions;
+- air quality is affected by regional transport, meteorology, co-pollutants, station location, and seasonal environmental conditions;
 - cloud machine utilization is affected by workload scheduling, resource contention, business cycles, and cluster-level operations;
 - industrial sensor signals are affected by operating conditions, maintenance, environment, and abnormal events.
 
@@ -76,7 +77,7 @@ Real forecasting is often an iterative process. A model may first make a predict
 
 ## Current Benchmark Status
 
-The current processed benchmark covers **14 datasets** across **9 domains**, with approximately **145K forecasting series** and **114M timestamp-level records**. Each dataset is stored in a lightweight CSV layout with one target file, one numeric exogenous file, one text exogenous file, and one task YAML definition for each benchmark task.
+The current processed benchmark covers **15 datasets** across **10 domains**, with approximately **149K forecasting series** and **277M timestamp-level records**. Each dataset is stored in a lightweight CSV layout with one target file, one numeric exogenous file, one text exogenous file, and one task YAML definition for each benchmark task.
 
 | Domain | Dataset | Forecasting Target | Forecasting Unit | Frequency | Dataset Size | Variables | Lookback / Prediction Windows |
 |---|---|---|---|---|---|---|---|
@@ -94,6 +95,7 @@ The current processed benchmark covers **14 datasets** across **9 domains**, wit
 | Climate | Jena Climate | Air temperature | Weather station | 10 min | 1 temperature series; about 420.2K timestamp records | 1 target; 5 numeric exogenous variables; text exogenous context | Lookback: 24 hours / 7 days / 30 days; Prediction: 6 hours / 24 hours / 7 days |
 | Hydrology | Basin Streamflow | Daily streamflow | River basin | 1 day | 27 basin series; about 345K daily records | 1 target; 16 numeric exogenous variables; text exogenous context | Lookback: 1 / 3 / 10 years; Prediction: 7 days / 30 days / 1 year |
 | AIOps | Alibaba Cluster | CPU utilization | Machine | 1 hour | 100 machine series; about 19K hourly records | 1 target; 6 numeric exogenous variables; text exogenous context | Lookback: 24 hours / 7 days / 30 days; Prediction: 6 hours / 24 hours / 7 days |
+| Air Quality | AQ Data | PM2.5 concentration | Monitoring station | 1 hour | 3,720 station series; about 163.03M hourly records | 1 target; 14 numeric exogenous variables; text exogenous context | Lookback: 24 hours / 7 days / 30 days; Prediction: 24 hours / 3 days / 7 days |
 
 ## Data Organization
 
@@ -125,9 +127,9 @@ FutureCast-Bench uses three public-facing variable categories.
 
 | Variable Type | Meaning | Examples |
 |---|---|---|
-| Target variable | The value to be forecasted | wind power, electricity price, electricity load, sales, traffic flow, clinical value, macroeconomic indicator, streamflow, CPU utilization |
-| Numeric exogenous variables | Structured variables outside the target sequence | calendar features, price, promotion, weather, hydrologic forcing, sensor graph features, patient attributes, machine-resource variables |
-| Text exogenous variables | Natural-language context associated with entities or timestamps | holiday descriptions, region descriptions, station descriptions, basin descriptions, machine context, product-store descriptions, variable descriptions |
+| Target variable | The value to be forecasted | wind power, electricity price, electricity load, sales, traffic flow, clinical value, macroeconomic indicator, streamflow, CPU utilization, PM2.5 |
+| Numeric exogenous variables | Structured variables outside the target sequence | calendar features, price, promotion, weather, hydrologic forcing, sensor graph features, patient attributes, machine-resource variables, station coordinates, co-pollutants |
+| Text exogenous variables | Natural-language context associated with entities or timestamps | holiday descriptions, region descriptions, station descriptions, basin descriptions, machine context, product-store descriptions, variable descriptions, air-quality station context |
 
 ## Task System
 
@@ -184,7 +186,7 @@ It aims to support research on:
 
 Planned next steps include:
 
-- expanding event-rich contextual annotations for electricity markets, transportation, retail, hydrology, AIOps, and medical forecasting;
+- expanding event-rich contextual annotations for electricity markets, transportation, retail, hydrology, air quality, AIOps, and medical forecasting;
 - adding more financial market and industrial operation datasets;
 - releasing model baselines and leaderboard protocols;
 - providing scripts for reproducible preprocessing and evaluation.
