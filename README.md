@@ -23,16 +23,6 @@ historical time series + numeric exogenous variables + textual exogenous context
 
 The goal is to support the next generation of time series foundation models, LLM-driven forecasting models, slow-thinking forecasting systems, and agentic forecasting workflows.
 
-## Naming
-
-| Usage | Name |
-|---|---|
-| Project family | **FutureCast（天星台）** |
-| Benchmark | **FutureCast-Bench** |
-| Data corpus | **FutureCast-Corpus** |
-| Task collection | **FutureCast-Tasks** |
-| Full title | **FutureCast-Bench: A Context-Aware Forecasting Benchmark** |
-
 ## Quickstart
 
 FutureCast-Bench now includes a small file-processing example and a tiny in-repository sample dataset. The sample shows the intended workflow: read a raw CSV file, write the standard FutureCast layout, then validate the generated files.
