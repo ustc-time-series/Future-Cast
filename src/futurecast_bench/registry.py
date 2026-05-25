@@ -104,6 +104,8 @@ def resolve_dataset_path(dataset_id: str, data_root: str | Path | None = None) -
     roots = [Path(data_root).expanduser()] if data_root is not None else [repo_root()]
     candidates: list[Path] = []
     for root in roots:
+        if (root / "processed").exists():
+            candidates.append(root)
         candidates.extend(
             [
                 root / spec.path,

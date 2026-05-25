@@ -35,7 +35,7 @@ The goal is to support the next generation of time series foundation models, LLM
 
 ## Quickstart
 
-FutureCast-Bench now includes a small open-box Python toolkit and a tiny in-repository sample dataset. The sample dataset lets users test the package immediately without downloading the full benchmark data.
+FutureCast-Bench now includes a small file-processing example and a tiny in-repository sample dataset. The sample shows the intended workflow: read a raw CSV file, write the standard FutureCast layout, then validate the generated files.
 
 ```bash
 git clone https://github.com/ustc-time-series/Future-Cast.git
@@ -43,38 +43,38 @@ cd Future-Cast
 pip install -e .
 ```
 
-List registered datasets:
+Process the toy raw file into the standard layout:
 
 ```bash
-futurecast list
+python scripts/prepare_toy_energy.py \
+  --source examples/raw/toy_energy/toy_energy_raw.csv \
+  --output examples/sample_data/toy_energy
 ```
 
-Inspect a dataset definition:
+Validate the generated FutureCast layout:
 
 ```bash
-futurecast inspect toy_energy
+python scripts/validate_futurecast_layout.py toy_energy --data-root .
 ```
 
-Validate the toy sample dataset:
+The output follows the same file organization used by every processed dataset:
+
+```text
+examples/sample_data/toy_energy/
+  processed/
+    target/
+    numeric_exogenous/
+    text_exogenous/
+  tasks/
+```
+
+For full processed datasets stored outside the GitHub repository, use the same validation script with the corresponding data root:
 
 ```bash
-futurecast validate toy_energy
+python scripts/validate_futurecast_layout.py aq_data --data-root /path/to/FutureCast
 ```
 
-Print aligned target, numeric exogenous, and text exogenous rows:
-
-```bash
-futurecast sample toy_energy --series-id toy_turbine_001 --limit 2
-```
-
-For full processed datasets stored outside the GitHub repository, pass the local data root:
-
-```bash
-futurecast validate aq_data --data-root /path/to/FutureCast
-futurecast sample aq_data --data-root /path/to/FutureCast --limit 3
-```
-
-The first toolkit release focuses on dataset registry, lightweight CSV loading, and layout validation. Full benchmark evaluation, baselines, and leaderboard submission checks are planned next.
+The first code release focuses on reproducible file processing, lightweight CSV layout validation, and a minimal sample dataset. Full benchmark evaluation, baselines, and leaderboard submission checks are planned next.
 
 ## Why FutureCast-Bench?
 
@@ -381,7 +381,7 @@ Planned next steps include:
 
 ## Repository Status
 
-This repository is under active development. The current version includes benchmark documentation, dataset cards, a data quality report, an installable lightweight Python package, a toy sample dataset, and CLI utilities for listing, inspecting, validating, and sampling FutureCast-style datasets. Full data release links, preprocessing script packaging, baseline models, and evaluation instructions will be updated as the benchmark is finalized.
+This repository is under active development. The current version includes benchmark documentation, dataset cards, a data quality report, lightweight file-processing utilities, and a toy sample dataset that demonstrates the standard FutureCast processed layout. Full data release links, preprocessing script packaging, baseline models, and evaluation instructions will be updated as the benchmark is finalized.
 
 
 ## Contact
