@@ -97,6 +97,145 @@ The current processed benchmark covers **15 datasets** across **10 domains**, wi
 | AIOps | Alibaba Cluster | CPU utilization | Machine | 1 hour | 100 machine series; about 19K hourly records | 1 target; 6 numeric exogenous variables; text exogenous context | Lookback: 24 hours / 7 days / 30 days; Prediction: 6 hours / 24 hours / 7 days |
 | Air Quality | AQ Data | PM2.5 concentration | Monitoring station | 1 hour | 3,720 station series; about 163.03M hourly records | 1 target; 14 numeric exogenous variables; text exogenous context | Lookback: 24 hours / 7 days / 30 days; Prediction: 24 hours / 3 days / 7 days |
 
+## Dataset Cards
+
+Each dataset card summarizes the forecasting task, forecasting unit, contextual variables, business meaning, recommended windows, and current release notes. The cards are intended to make the benchmark understandable before users inspect the raw files or task YAML definitions.
+
+### SDWPF
+
+- **Domain:** energy and wind power forecasting.
+- **Task:** forecast wind turbine active power from historical SCADA signals, weather-related variables, turbine position, and timestamp context.
+- **Forecasting unit:** one wind turbine per series; 134 turbine series at 10-minute frequency.
+- **Context variables:** wind speed, wind direction, temperature, pressure, humidity, turbine operating signals, turbine coordinates, elevation, and calendar fields.
+- **Windows:** 24 hours to 8 hours, 7 days to 24 hours, and 30 days to 7 days.
+- **Current note:** useful for evaluating context-aware renewable power forecasting under turbine-level heterogeneity.
+
+### AEMO NEM DispatchIS
+
+- **Domain:** electricity price forecasting.
+- **Task:** forecast regional reference price (`RRP`) for Australian NEM regions.
+- **Forecasting unit:** one electricity market region per series; 5 region series at 5-minute frequency.
+- **Context variables:** total demand, available generation, net interchange, settlement interval, and calendar fields.
+- **Windows:** 24 hours to 1 hour, 7 days to 24 hours, and 28 days to 7 days.
+- **Current note:** demand, generation, and interchange variables are treated as historical market context aligned with each region.
+
+### OPSD German Load
+
+- **Domain:** electricity load forecasting.
+- **Task:** forecast German actual electricity load with renewable generation and day-ahead price context.
+- **Forecasting unit:** one country-level load series at hourly frequency.
+- **Context variables:** wind generation, solar generation, and day-ahead electricity price.
+- **Windows:** 7 days to 24 hours, 30 days to 7 days, and 90 days to 30 days.
+- **Current note:** useful as a compact power-system benchmark linking load, renewable output, and market price.
+
+### M5
+
+- **Domain:** retail sales forecasting.
+- **Task:** forecast daily unit sales for item-store pairs.
+- **Forecasting unit:** one item-store pair per series; 30,490 daily sales series.
+- **Context variables:** selling price, calendar fields, SNAP indicator, and event-day indicator with text context for product-store-time semantics.
+- **Windows:** 8 weeks to 28 days, 24 weeks to 12 weeks, and 1 year to 24 weeks.
+- **Current note:** large-scale daily retail benchmark for evaluating promotion, price, calendar, and item-store context.
+
+### Rossmann Store Sales
+
+- **Domain:** retail store sales forecasting.
+- **Task:** forecast daily store sales for Rossmann stores.
+- **Forecasting unit:** one store per series; 1,115 daily store series.
+- **Context variables:** customers, promotion, opening status, school holiday, state holiday, competition distance, and store promotion metadata.
+- **Windows:** 8 weeks to 28 days, 24 weeks to 12 weeks, and 1 year to 24 weeks.
+- **Current note:** useful for store-level demand forecasting with strong calendar, promotion, and competition effects.
+
+### Favorita Grocery Sales
+
+- **Domain:** grocery sales forecasting.
+- **Task:** forecast daily unit sales for store-item pairs from one selected store subset.
+- **Forecasting unit:** one store-item pair per series; 4,081 daily series.
+- **Context variables:** promotion, transactions, oil price, calendar fields, store cluster, item class, item perishability, and holiday indicators.
+- **Windows:** 8 weeks to 28 days, 24 weeks to 12 weeks, and 1 year to 24 weeks.
+- **Current note:** released as a compact one-store subset to keep the benchmark manageable while preserving item-level sales diversity.
+
+### PhysioNet 2012
+
+- **Domain:** medical and ICU time-series forecasting.
+- **Task:** forecast ICU clinical variable values from recent patient measurements and patient-level context.
+- **Forecasting unit:** one ICU stay-variable pair per series; 107,188 hourly clinical series.
+- **Context variables:** vital signs, laboratory-style variables, hour features, age, gender, height, ICU type, SAPS-I, and SOFA.
+- **Windows:** 6 hours to 6 hours, 12 hours to 12 hours, and 24 hours to 24 hours.
+- **Current note:** useful for testing forecasting under clinical heterogeneity, sparse observations, and patient-state context.
+
+### PEMS04
+
+- **Domain:** road traffic forecasting.
+- **Task:** forecast 5-minute traffic flow for road sensors.
+- **Forecasting unit:** one road sensor per series; 307 sensor series.
+- **Context variables:** occupancy, speed, road-network graph features, sensor index, and synthetic 5-minute calendar fields.
+- **Windows:** 24 hours to 1 hour, 7 days to 24 hours, and 28 days to 7 days.
+- **Current note:** the released source file does not include original wall-clock timestamps, so a regular synthetic 5-minute grid preserves temporal order.
+
+### PEMS07
+
+- **Domain:** road traffic forecasting.
+- **Task:** forecast 5-minute traffic flow for a larger road-sensor network.
+- **Forecasting unit:** one road sensor per series; 883 sensor series.
+- **Context variables:** road-network graph features, sensor index, and synthetic 5-minute calendar fields.
+- **Windows:** 24 hours to 1 hour, 7 days to 24 hours, and 28 days to 7 days.
+- **Current note:** complements PEMS04 with a larger sensor graph and the same order-preserving synthetic timestamp design.
+
+### NYC TLC
+
+- **Domain:** urban mobility forecasting.
+- **Task:** forecast hourly taxi pickup demand.
+- **Forecasting unit:** one taxi type and pickup-zone pair per series; 513 hourly series.
+- **Context variables:** passenger count, trip distance, fare amount, total amount, tip amount, drop-off diversity, location ID, and calendar cycles.
+- **Windows:** 7 days to 24 hours, 28 days to 7 days, and 90 days to 14 days.
+- **Current note:** useful for city-level demand forecasting with spatial zone and mobility-context signals.
+
+### FRED-MD
+
+- **Domain:** macroeconomic forecasting.
+- **Task:** forecast transformed monthly macroeconomic indicator values.
+- **Forecasting unit:** one macroeconomic variable per series; 126 monthly series.
+- **Context variables:** raw value, transformation code, year, month, quarter, month index, and cyclic month features.
+- **Windows:** 3 years to 1 month, 5 years to 12 months, and 10 years to 24 months.
+- **Current note:** supports long-horizon macroeconomic forecasting where variable meaning and transformation metadata matter.
+
+### Jena Climate
+
+- **Domain:** climate and weather forecasting.
+- **Task:** forecast air temperature at the Jena weather station.
+- **Forecasting unit:** one station-level temperature series at 10-minute frequency.
+- **Context variables:** pressure, relative humidity, wind velocity, maximum wind velocity, and wind direction.
+- **Windows:** 24 hours to 6 hours, 7 days to 24 hours, and 30 days to 7 days.
+- **Current note:** compact single-station weather benchmark with dense high-frequency observations.
+
+### Basin Streamflow
+
+- **Domain:** hydrology and streamflow forecasting.
+- **Task:** forecast daily streamflow for river basins.
+- **Forecasting unit:** one river basin per series; 27 daily basin series.
+- **Context variables:** precipitation, radiation, snow water equivalent, maximum and minimum temperature, vapor pressure, basin latitude, basin elevation, basin area, and water-year calendar features.
+- **Windows:** 1 year to 7 days, 3 years to 30 days, and 10 years to 1 year.
+- **Current note:** useful for scientific forecasting where physical basin attributes and hydro-meteorological forcing are central.
+
+### Alibaba Cluster
+
+- **Domain:** AIOps and cloud-resource forecasting.
+- **Task:** forecast machine CPU utilization.
+- **Forecasting unit:** one machine per series; first 100 machine series at hourly frequency.
+- **Context variables:** memory utilization, disk IO utilization, network IO utilization, hour, weekday, and weekend indicator.
+- **Windows:** 24 hours to 6 hours, 7 days to 24 hours, and 30 days to 7 days.
+- **Current note:** compact subset designed for standard CPU-utilization forecasting without processing the full cluster trace.
+
+### AQ Data
+
+- **Domain:** air quality forecasting.
+- **Task:** forecast hourly PM2.5 concentration for monitoring stations.
+- **Forecasting unit:** one monitoring station per series; 3,720 hourly station series.
+- **Context variables:** PM10, NO2, O3, SO2, CO, latitude, longitude, coarse region code, station index, and calendar fields.
+- **Windows:** 24 hours to 24 hours, 7 days to 3 days, and 30 days to 7 days.
+- **Current note:** the provided source files do not contain temperature, humidity, wind speed, wind direction, or pressure, so the first release uses available co-pollutants, station coordinates, regional context, and calendar variables.
+
 ## Data Organization
 
 Each dataset is organized into a unified lightweight CSV-based structure.
