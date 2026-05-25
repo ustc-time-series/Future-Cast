@@ -236,6 +236,12 @@ Each dataset card summarizes the forecasting task, forecasting unit, contextual 
 - **Windows:** 24 hours to 24 hours, 7 days to 3 days, and 30 days to 7 days.
 - **Current note:** the provided source files do not contain temperature, humidity, wind speed, wind direction, or pressure, so the first release uses available co-pollutants, station coordinates, regional context, and calendar variables.
 
+## Data Quality Analysis
+
+A standalone data quality report is provided in [docs/data_quality_report.md](docs/data_quality_report.md). It summarizes the current format-level and sample-level quality checks, including target/numeric/text file-count consistency, sampled `timestamp + series_id` alignment, sampled missingness, known source-data limitations, and recommended next quality-audit steps.
+
+The current report confirms that all 15 processed datasets follow the unified lightweight layout and pass sampled alignment checks. It also documents important caveats such as sparse AQ and clinical observations, synthetic timestamps in PEMS, relative trace timestamps in Alibaba Cluster, and missing source weather variables in AQ Data.
+
 ## Data Organization
 
 Each dataset is organized into a unified lightweight CSV-based structure.
