@@ -33,6 +33,49 @@ The goal is to support the next generation of time series foundation models, LLM
 | Task collection | **FutureCast-Tasks** |
 | Full title | **FutureCast-Bench: A Context-Aware Forecasting Benchmark** |
 
+## Quickstart
+
+FutureCast-Bench now includes a small open-box Python toolkit and a tiny in-repository sample dataset. The sample dataset lets users test the package immediately without downloading the full benchmark data.
+
+```bash
+git clone https://github.com/ustc-time-series/Future-Cast.git
+cd Future-Cast
+pip install -e .
+```
+
+List registered datasets:
+
+```bash
+futurecast list
+```
+
+Inspect a dataset definition:
+
+```bash
+futurecast inspect toy_energy
+```
+
+Validate the toy sample dataset:
+
+```bash
+futurecast validate toy_energy
+```
+
+Print aligned target, numeric exogenous, and text exogenous rows:
+
+```bash
+futurecast sample toy_energy --series-id toy_turbine_001 --limit 2
+```
+
+For full processed datasets stored outside the GitHub repository, pass the local data root:
+
+```bash
+futurecast validate aq_data --data-root /path/to/FutureCast
+futurecast sample aq_data --data-root /path/to/FutureCast --limit 3
+```
+
+The first toolkit release focuses on dataset registry, lightweight CSV loading, and layout validation. Full benchmark evaluation, baselines, and leaderboard submission checks are planned next.
+
 ## Why FutureCast-Bench?
 
 Most existing time series benchmarks are built around the numerical series itself. They evaluate whether a model can forecast future values from past values across different domains, frequencies, and horizons. This is necessary, but it is not enough for real-world forecasting.
@@ -338,7 +381,7 @@ Planned next steps include:
 
 ## Repository Status
 
-This repository is under active development. The current version focuses on benchmark construction, dataset standardization, task design, and documentation. Data release links, preprocessing scripts, baseline models, and evaluation instructions will be updated as the benchmark is finalized.
+This repository is under active development. The current version includes benchmark documentation, dataset cards, a data quality report, an installable lightweight Python package, a toy sample dataset, and CLI utilities for listing, inspecting, validating, and sampling FutureCast-style datasets. Full data release links, preprocessing script packaging, baseline models, and evaluation instructions will be updated as the benchmark is finalized.
 
 
 ## Contact

@@ -1,0 +1,7 @@
+timestamp,series_id,text_exogenous
+2024-01-01 00:00:00,toy_turbine_001,Toy wind turbine context. Stable overnight wind and low temperature.
+2024-01-01 01:00:00,toy_turbine_001,Toy wind turbine context. Wind speed increases slightly.
+2024-01-01 02:00:00,toy_turbine_001,Toy wind turbine context. Wind speed eases after a short rise.
+2024-01-01 03:00:00,toy_turbine_001,Toy wind turbine context. Early morning wind strengthens.
+2024-01-01 04:00:00,toy_turbine_001,Toy wind turbine context. Strongest toy wind interval.
+2024-01-01 05:00:00,toy_turbine_001,Toy wind turbine context. Wind remains elevated.

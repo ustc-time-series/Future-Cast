@@ -1,0 +1,7 @@
+timestamp,series_id,text_exogenous
+2024-01-01 00:00:00,toy_turbine_002,Toy wind turbine context. Lower wind-speed regime than turbine 001.
+2024-01-01 01:00:00,toy_turbine_002,Toy wind turbine context. Wind remains steady.
+2024-01-01 02:00:00,toy_turbine_002,Toy wind turbine context. Gradual wind increase.
+2024-01-01 03:00:00,toy_turbine_002,Toy wind turbine context. Modest early morning ramp.
+2024-01-01 04:00:00,toy_turbine_002,Toy wind turbine context. Local peak in toy power.
+2024-01-01 05:00:00,toy_turbine_002,Toy wind turbine context. Wind softens slightly.

@@ -1,0 +1,147 @@
+datasets:
+  - dataset_id: toy_energy
+    domain: sample
+    frequency: 1H
+    path: examples/sample_data/toy_energy
+    forecasting_unit: toy wind turbine
+    target_column: target_power
+    numeric_exogenous: [wind_speed, temperature, hour]
+    series_count: 2
+    available_in_repo: true
+    description: Tiny in-repository sample dataset for smoke tests and tutorials.
+    note: Synthetic data; not part of benchmark scoring.
+  - dataset_id: sdwpf
+    domain: energy
+    frequency: 10min
+    path: datasets/energy/sdwpf
+    forecasting_unit: wind turbine
+    target_column: target_active_power
+    numeric_exogenous: [turbine_id, Wspd, Wdir, Etmp, Itmp, Ndir, Pab1, Pab2, Pab3, Prtv, T2m, Sp, RelH, Wspd_w, Wdir_w, Tp, x_coord, y_coord, elevation, hour_of_day, day_of_week, day_of_year, month, season]
+    series_count: 134
+    description: Wind turbine active-power forecasting.
+  - dataset_id: aemo_nem_dispatchis
+    domain: power
+    frequency: 5min
+    path: datasets/Electricity price/aemo_nem_dispatchis
+    forecasting_unit: NEM region
+    target_column: target_rrp
+    numeric_exogenous: [TOTALDEMAND, AVAILABLEGENERATION, NETINTERCHANGE, year, month, day_of_month, day_of_week, hour, minute, settlement_interval, is_weekend]
+    series_count: 5
+    description: Australian regional electricity price forecasting.
+  - dataset_id: opsd_de_load
+    domain: power
+    frequency: 1H
+    path: datasets/power/opsd_de_load
+    forecasting_unit: country-level load
+    target_column: DE_load_actual_entsoe_transparency
+    numeric_exogenous: [DE_wind_generation_actual, DE_solar_generation_actual, DE_price_day_ahead]
+    series_count: 1
+    description: German electricity load forecasting.
+  - dataset_id: m5
+    domain: sales
+    frequency: 1D
+    path: datasets/sales/m5
+    forecasting_unit: item-store pair
+    target_column: target_unit_sales
+    numeric_exogenous: [sell_price, wm_yr_wk, wday, month, year, snap, is_event_day]
+    series_count: 30490
+    description: Daily item-store sales forecasting.
+  - dataset_id: rossmann
+    domain: sales
+    frequency: 1D
+    path: datasets/sales/rossmann
+    forecasting_unit: store
+    target_column: target_sales
+    numeric_exogenous: [store_id, Customers, DayOfWeek, Open, Promo, SchoolHoliday, state_holiday_flag, CompetitionDistance, CompetitionOpenSinceMonth, CompetitionOpenSinceYear, Promo2, Promo2SinceWeek, Promo2SinceYear]
+    series_count: 1115
+    description: Daily store sales forecasting.
+  - dataset_id: favorita
+    domain: sales
+    frequency: 1D
+    path: datasets/sales/favorita
+    forecasting_unit: store-item pair
+    target_column: target_unit_sales
+    numeric_exogenous: [store_nbr, item_nbr, onpromotion, onpromotion_missing, transactions, dcoilwtico, day_of_week, day_of_month, month, year, is_weekend, is_month_start, is_month_end, store_cluster, item_class, item_perishable, national_holiday, regional_holiday, local_holiday, work_day, transferred_holiday]
+    series_count: 4081
+    description: Compact grocery sales subset from one selected store.
+  - dataset_id: physionet2012
+    domain: medical
+    frequency: 1H
+    path: datasets/medical/physionet2012
+    forecasting_unit: ICU stay-variable pair
+    target_column: target_clinical_value
+    numeric_exogenous: [HR, Temp, GCS, Urine, SysABP, DiasABP, MAP, NISysABP, NIDiasABP, NIMAP, RespRate, hour, hour_fraction, age, gender, height, icu_type, SAPS_I, SOFA]
+    series_count: 107188
+    description: ICU clinical time-series forecasting.
+  - dataset_id: pems04
+    domain: traffic
+    frequency: 5min
+    path: datasets/traffic/pems04
+    forecasting_unit: road sensor
+    target_column: target_traffic_flow
+    numeric_exogenous: [occupancy, speed, node_index, in_degree, out_degree, total_degree, mean_in_cost, mean_out_cost, time_idx, day_index, slot_of_day, hour, minute, sin_slot_of_day, cos_slot_of_day]
+    series_count: 307
+    description: Road-sensor traffic flow forecasting.
+  - dataset_id: pems07
+    domain: traffic
+    frequency: 5min
+    path: datasets/traffic/pems07
+    forecasting_unit: road sensor
+    target_column: target_traffic_flow
+    numeric_exogenous: [node_index, in_degree, out_degree, total_degree, mean_in_cost, mean_out_cost, time_idx, day_index, slot_of_day, hour, minute, sin_slot_of_day, cos_slot_of_day]
+    series_count: 883
+    description: Larger road-sensor traffic flow forecasting.
+  - dataset_id: nyc_tlc
+    domain: traffic
+    frequency: 1H
+    path: datasets/traffic/nyc_tlc
+    forecasting_unit: taxi type-pickup zone pair
+    target_column: target_pickup_count
+    numeric_exogenous: [location_id, passenger_count_sum, trip_distance_sum, fare_amount_sum, total_amount_sum, tip_amount_sum, mean_trip_distance, mean_total_amount, dropoff_zone_count, year, month, day_of_month, day_of_week, hour, is_weekend, sin_hour, cos_hour, sin_day_of_week, cos_day_of_week]
+    series_count: 513
+    description: Hourly taxi pickup-demand forecasting.
+  - dataset_id: fred_md
+    domain: economics
+    frequency: 1M
+    path: datasets/economics/fred_md
+    forecasting_unit: macroeconomic variable
+    target_column: target_transformed_value
+    numeric_exogenous: [raw_value, transform_code, year, month, quarter, month_index, sin_month, cos_month]
+    series_count: 126
+    description: Monthly macroeconomic indicator forecasting.
+  - dataset_id: jena_climate
+    domain: climate
+    frequency: 10min
+    path: datasets/climate/jena_climate
+    forecasting_unit: weather station
+    target_column: target_temperature_degC
+    numeric_exogenous: [pressure_mbar, relative_humidity_percent, wind_velocity_mps, max_wind_velocity_mps, wind_direction_deg]
+    series_count: 1
+    description: Jena air-temperature forecasting.
+  - dataset_id: basin_streamflow
+    domain: hydrology
+    frequency: 1D
+    path: datasets/hydrology/basin_streamflow
+    forecasting_unit: river basin
+    target_column: streamflow
+    numeric_exogenous: [dayl_s, prcp_mm_per_day, srad_w_per_m2, swe_mm, tmax_c, tmin_c, vp_pa, basin_latitude, basin_elevation_m, basin_area_m2, year, month, day_of_month, day_of_year, day_of_week, water_year]
+    series_count: 27
+    description: Daily basin streamflow forecasting.
+  - dataset_id: alibaba_cluster
+    domain: aiops
+    frequency: 1H
+    path: datasets/aiops/alibaba_cluster
+    forecasting_unit: machine
+    target_column: cpu_util_percent
+    numeric_exogenous: [mem_util_percent, disk_io_percent, net_io_percent, hour, weekday, is_weekend]
+    series_count: 100
+    description: CPU utilization forecasting for a compact machine subset.
+  - dataset_id: aq_data
+    domain: air_quality
+    frequency: 1h
+    path: datasets/air_quality/aq_data
+    forecasting_unit: monitoring station
+    target_column: target_pm25
+    numeric_exogenous: [pm10, no2, o3, so2, co, lat, lon, region_code, station_index, hour, weekday, is_weekend, month, day_of_year]
+    series_count: 3720
+    description: Hourly PM2.5 forecasting for air-quality monitoring stations.

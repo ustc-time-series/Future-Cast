@@ -1,0 +1,28 @@
+dataset_id: toy_energy
+domain: sample
+frequency: 1H
+series_granularity: one toy wind turbine per series_id
+series_count: 2
+target:
+  file_pattern: processed/target/{series_id}.csv
+  column: target_power
+numeric_exogenous:
+  file_pattern: processed/numeric_exogenous/{series_id}.csv
+  columns:
+    - wind_speed
+    - temperature
+    - hour
+text_exogenous:
+  file_pattern: processed/text_exogenous/{series_id}.csv
+  column: text_exogenous
+alignment_rule:
+  key_columns:
+    - timestamp
+    - series_id
+  require_equal_length: true
+forecasting_windows:
+  short:
+    context_length: 3
+    prediction_length: 1
+    context_description: past 3 hours
+    prediction_description: next 1 hour

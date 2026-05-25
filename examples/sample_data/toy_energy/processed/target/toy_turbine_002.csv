@@ -1,0 +1,7 @@
+timestamp,series_id,target_power
+2024-01-01 00:00:00,toy_turbine_002,8.0
+2024-01-01 01:00:00,toy_turbine_002,8.5
+2024-01-01 02:00:00,toy_turbine_002,9.0
+2024-01-01 03:00:00,toy_turbine_002,9.8
+2024-01-01 04:00:00,toy_turbine_002,10.2
+2024-01-01 05:00:00,toy_turbine_002,10.0
