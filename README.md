@@ -6,9 +6,6 @@
 
 **FutureCast-Bench** is a context-aware forecasting benchmark from the **FutureCast（天星台）** project. It is designed to evaluate whether forecasting models can move beyond numerical extrapolation and reason with real-world context.
 
-**Chinese name:** 天星台  
-**Tagline:** *A Context-Aware Forecasting Benchmark*
-
 Instead of representing each forecasting task only as:
 
 ```text
