@@ -382,3 +382,4 @@ This repository is under active development. The current version includes benchm
 FutureCast（天星台） is developed by the AGI Research Group at the State Key Laboratory of Cognitive Intelligence, University of Science and Technology of China.
 
 For questions, suggestions, or collaboration, please open an issue in this repository.
+<!-- Repository maintenance refresh: 2026-08-05. -->

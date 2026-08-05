@@ -145,3 +145,4 @@ datasets:
     numeric_exogenous: [pm10, no2, o3, so2, co, lat, lon, region_code, station_index, hour, weekday, is_weekend, month, day_of_year]
     series_count: 3720
     description: Hourly PM2.5 forecasting for air-quality monitoring stations.
+# Repository maintenance refresh: 2026-08-05.

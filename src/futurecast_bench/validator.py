@@ -122,3 +122,4 @@ def validate_dataset(
         sample_alignment_ok=sample_alignment_ok,
         errors=errors,
     )
+# Repository maintenance refresh: 2026-08-05.

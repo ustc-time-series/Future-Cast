@@ -39,3 +39,4 @@ def test_prepare_toy_energy_writes_futurecast_layout(tmp_path: Path):
     assert direct_result.file_count_equal is True
     assert direct_result.sample_alignment_ok is True
     assert direct_result.errors == []
+# Repository maintenance refresh: 2026-08-05.

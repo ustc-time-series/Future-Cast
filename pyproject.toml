@@ -17,3 +17,4 @@ where = ["src"]
 
 [tool.setuptools.package-data]
 futurecast_bench = ["configs/*.yaml"]
+# Repository maintenance refresh: 2026-08-05.

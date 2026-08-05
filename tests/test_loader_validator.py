@@ -29,3 +29,4 @@ def test_load_series_returns_aligned_rows_with_context():
     assert series.rows[0]["target_power"] == "10.0"
     assert series.rows[0]["wind_speed"] == "5.2"
     assert "Toy wind turbine" in series.rows[0]["text_exogenous"]
+# Repository maintenance refresh: 2026-08-05.

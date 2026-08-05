@@ -26,3 +26,4 @@ forecasting_windows:
     prediction_length: 1
     context_description: past 3 hours
     prediction_description: next 1 hour
+# Repository maintenance refresh: 2026-08-05.

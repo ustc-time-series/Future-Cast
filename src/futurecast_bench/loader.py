@@ -106,3 +106,4 @@ def load_series(
 
     loaded_series_id = merged_rows[0]["series_id"] if merged_rows else target_path.stem
     return SeriesData(dataset_id=dataset_id, series_id=loaded_series_id, rows=merged_rows)
+# Repository maintenance refresh: 2026-08-05.

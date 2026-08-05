@@ -121,3 +121,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+# Repository maintenance refresh: 2026-08-05.

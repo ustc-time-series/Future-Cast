@@ -1,4 +1,4 @@
-timestamp,series_id,target_power
+"timestamp",series_id,target_power
 2024-01-01 00:00:00,toy_turbine_002,8.0
 2024-01-01 01:00:00,toy_turbine_002,8.5
 2024-01-01 02:00:00,toy_turbine_002,9.0

@@ -123,3 +123,4 @@ def resolve_dataset_path(dataset_id: str, data_root: str | Path | None = None) -
         f"Could not locate dataset '{dataset_id}'. Tried:\n{formatted}\n"
         "Pass --data-root pointing to the repository root or processed dataset root."
     )
+# Repository maintenance refresh: 2026-08-05.

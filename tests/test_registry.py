@@ -15,3 +15,4 @@ def test_get_dataset_returns_core_metadata():
     assert dataset.frequency == "1H"
     assert dataset.target_column == "target_power"
     assert dataset.available_in_repo is True
+# Repository maintenance refresh: 2026-08-05.

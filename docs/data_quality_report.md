@@ -143,3 +143,4 @@ The next quality pass should upgrade this report from sample-level validation to
 ## Release Interpretation
 
 The current processed benchmark is suitable for documentation, task-design iteration, and initial model-loading experiments. Before a formal public benchmark release, FutureCast-Bench should add automated validators and generate full data quality reports as part of the preprocessing pipeline.
+<!-- Repository maintenance refresh: 2026-08-05. -->
